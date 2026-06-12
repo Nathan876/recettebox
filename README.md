@@ -1,50 +1,37 @@
-# Welcome to your Expo app 👋
+1. Installer les dépendances : npm install
+2. Lancer le serveur de développement Expo : npx expo start
+3. Scannez le QR code affiché dans le terminal avec l'application Expo Go (sur iOS ou Android) en veillant à être sur le même réseau Wi-Fi que votre ordinateur. Vous pouvez également appuyer sur a pour lancer l'émulateur Android ou i pour le simulateur iOS.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Fait / Pas fait (Périmètre du TP)
+Fonctionnalités obligatoires
+• [X] Recherche de recettes via l'API TheMealDB
+• [x] Liste performante avec FlatList et utilisation d'un composant RecipeCard réutilisable
+• [x] Écran de détail (image de la recette, ingrédients structurés, instructions)
+• [x] État global géré par un store Redux (Redux Toolkit)
+• [x] Favoris ajoutés/retirés via Redux et persistés avec redux-persist + AsyncStorage
+• [x] Écran "Favoris" dédié, avec gestion des états (chargement, erreur, liste vide)
+Bonus réalisés
+• [x] Mise en cache des recherches dans le store avec recipesSlice
+• [x] Filtrage des recettes par catégories
+• [x] Écran "Recette au hasard"
+• [x] Navigation avancée par onglets
+• [x] Intégration du lien vidéo YouTube de la recette via react-native-youtube-iframe
+• [x] Ajout/Retrait rapide des favoris directement depuis les cartes de la page d'accueil
+Fonctionnalités bonus non réalisées
+• [ ] Thème sombre
+• [ ] Animations avancées au chargement des listes
 
-## Get started
+Technologies utilisées
+• Framework : React Native & Expo
+• Navigation : React Navigation (Native Stack & Bottom Tabs)
+• Gestion d'état : Redux Toolkit
+• Persistance : Redux Persist & AsyncStorage
+• Interface & Icônes : StyleSheet (Flexbox) & Expo Vector Icons (Ionicons)
+• Vidéos : React Native Webview & React Native Youtube Iframe
 
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Difficultés rencontrées
+• Imbrication des navigateurs : Il a fallu comprendre comment imbriquer correctement le TabNavigator à l'intérieur du StackNavigator principal pour éviter l'erreur de double NavigationContainer et gérer correctement l'affichage de la barre du bas.
+• Typage avec TypeScript : Résolution de plusieurs conflits de types, notamment la conversion des IDs de recettes de type string (stockés en mémoire) vers le type number attendu par certaines fonctions API.
+• Cycle de vie des onglets : L'écran affichant une recette aléatoire ne se mettait pas à jour en changeant d'onglet. Le problème a été résolu en remplaçant useEffect par le hook useFocusEffect combiné à useCallback.
+• Intégration Vidéo : L'extraction de l'ID unique de la vidéo YouTube à partir de l'URL complète fournie par l'API a nécessité une manipulation propre des chaînes de caractères (.split('=')[1]).
+Projet réalisé dans le cadre du TP React Native.
